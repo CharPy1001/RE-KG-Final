@@ -1,0 +1,44 @@
+核心实体
+
+房源：ID、名称、地址、户型、平均单价、面积、源链接
+
+区域：ID、名称、所属城市、所属行政区
+
+配套：ID、名称、类别（交通、商业、教育、医疗）
+
+用户：ID、昵称、购房预算、家庭人数、优先级偏好
+
+
+
+核心关系
+
+房源 位于 区域
+配套 位于 区域
+房源 邻近 配套
+
+用户 关注 区域
+用户 希望定居 城市
+用户 优先考虑 配套
+
+
+
+用户行为：提问、设定权重
+
+
+
+制表
+
+Houses.csv
+——ID Name Address FloorPlan AvrPrice Size Link
+Regions.csv
+——ID Name District City
+Facilities.csv
+——ID Name Type
+Distances.csv
+——HouseID FacilityID Distance
+
+
+清空命令：
+MATCH (n)
+OPTIONAL MATCH (n)-[r]-()
+DELETE n,r
